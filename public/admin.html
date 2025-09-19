@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechLogistics | Administrador</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Panel de administración</h1>
+      <button class="theme-toggle" aria-label="Cambiar tema" id="themeToggle">🌙</button>
+      <button class="theme-toggle" id="logoutBtn">Cerrar sesión</button>
+    </header>
+    <main class="container">
+      <section class="card">
+        <h2 class="section-title">Inventario de productos</h2>
+        <div class="actions" style="margin-bottom:8px;">
+          <button id="newProductBtn">Nuevo producto</button>
+        </div>
+        <div class="table-wrap">
+          <table id="inventoryTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Modificar stock</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <h2 class="section-title">Transportistas</h2>
+        <div class="actions" style="margin-bottom:8px;">
+          <button id="newCourierBtn">Nuevo transportista</button>
+        </div>
+        <div class="table-wrap">
+          <table id="couriersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <h2 class="section-title">Órdenes confirmadas sin asignar</h2>
+        <div class="table-wrap">
+          <table id="adminConfirmedTable">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Dirección</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <h2 class="section-title">Órdenes sin confirmar</h2>
+        <div class="table-wrap">
+          <table id="adminPendingTable">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Dirección</th>
+                <th>Total</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="card">
+        <h2 class="section-title">Órdenes asignadas</h2>
+        <div class="table-wrap">
+          <table id="adminAssignedTable">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Cliente</th>
+                <th>Transportista</th>
+                <th>Dirección</th>
+                <th>Estado</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <div id="toast" class="toast"></div>
+    <div id="modalContainer"></div>
+    <!-- Cargar scripts globales en orden: API → Router → UI → Script de página -->
+    <script src="./js/api.js"></script>
+    <script src="./js/router.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/admin.js"></script>
+  </body>
+</html>

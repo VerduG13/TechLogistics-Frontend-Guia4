@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechLogistics | Cliente</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Fix: asegurar que el modal oculto se oculte de verdad -->
+    <style>
+      .modal-backdrop.hidden { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Panel de cliente</h1>
+      <div class="actions">
+        <button class="theme-toggle" id="themeToggle" title="Modo oscuro">🌓</button>
+        <button id="logoutBtn">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Catálogo -->
+      <section class="card">
+        <div class="section-title">
+          <h2 style="margin:0">Catálogo</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="productsBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Carrito -->
+      <section class="card">
+        <div class="section-title">
+          <h2 style="margin:0">Carrito</h2>
+          <span class="badge">Añade productos desde el catálogo</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Cant.</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="cartBody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4" style="text-align:right"><strong>Total</strong></td>
+                <td id="cartTotal"><strong>$0</strong></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- Mis órdenes -->
+      <section class="card">
+        <div class="section-title">
+          <h2 style="margin:0">Mis órdenes</h2>
+        </div>
+
+        <div class="actions" style="margin-bottom:8px">
+          <button id="btnNuevaOrden">Crear nueva orden</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Estado</th>
+                <th>Dirección</th>
+                <th>Fecha confirmación</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal + Toast -->
+    <div id="modalBackdrop" class="hidden modal-backdrop">
+      <div class="modal">
+        <div id="modalContent"></div>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts globales (sin módulos) -->
+    <script src="./js/api.js"></script>
+    <script src="./js/router.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/cliente.js"></script>
+  </body>
+</html>

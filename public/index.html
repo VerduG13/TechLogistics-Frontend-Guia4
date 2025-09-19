@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechLogistics | Iniciar Sesión</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>TechLogistics</h1>
+      <!-- botón de alternancia de tema -->
+      <button class="theme-toggle" aria-label="Cambiar tema" id="themeToggle">🌙</button>
+    </header>
+    <main class="container">
+      <div class="card" style="max-width: 480px; margin: 0 auto;">
+        <div class="tabs">
+          <button type="button" class="tab-btn active" data-target="loginForm">
+            Iniciar sesión
+          </button>
+          <button type="button" class="tab-btn" data-target="registerForm">
+            Registrarse
+          </button>
+          <button type="button" class="tab-btn" data-target="changePwdForm">
+            Cambiar contraseña
+          </button>
+        </div>
+        <!-- formulario de inicio de sesión -->
+        <form id="loginForm" class="auth-form">
+          <div class="field">
+            <label for="loginEmail">Correo electrónico</label>
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="correo@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="loginPassword">Contraseña</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div class="actions">
+            <button type="submit">Entrar</button>
+          </div>
+        </form>
+        <!-- formulario de registro (solo para clientes) -->
+        <form id="registerForm" class="auth-form hidden">
+          <div class="field">
+            <label for="registerName">Nombre completo</label>
+            <input
+              type="text"
+              id="registerName"
+              placeholder="Nombre y apellido"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="registerEmail">Correo electrónico</label>
+            <input
+              type="email"
+              id="registerEmail"
+              placeholder="correo@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="registerPhone">Número de teléfono</label>
+            <input
+              type="text"
+              id="registerPhone"
+              placeholder="+57 3000000000"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="registerPassword">Contraseña</label>
+            <input
+              type="password"
+              id="registerPassword"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div class="actions">
+            <button type="submit">Crear cuenta</button>
+          </div>
+        </form>
+        <!-- formulario de cambio de contraseña -->
+        <form id="changePwdForm" class="auth-form hidden">
+          <div class="field">
+            <label for="changeEmail">Correo electrónico</label>
+            <input
+              type="email"
+              id="changeEmail"
+              placeholder="correo@ejemplo.com"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="changeOldPwd">Contraseña actual</label>
+            <input
+              type="password"
+              id="changeOldPwd"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="changeNewPwd">Nueva contraseña</label>
+            <input
+              type="password"
+              id="changeNewPwd"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div class="actions">
+            <button type="submit">Actualizar contraseña</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <!-- Toasts y modals -->
+    <div id="toast" class="toast"></div>
+    <div id="modalContainer"></div>
+    <!-- Cargar scripts en orden: API primero, luego UI y finalmente autenticación -->
+    <script src="./js/api.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/auth.js"></script>
+    <script>
+      // pestañas de formularios
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          tabs.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          document.querySelectorAll('.auth-form').forEach((f) => f.classList.add('hidden'));
+          document.getElementById(btn.dataset.target).classList.remove('hidden');
+        });
+      });
+    </script>
+  </body>
+</html>
