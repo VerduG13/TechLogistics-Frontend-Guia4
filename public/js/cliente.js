@@ -258,9 +258,9 @@ if (!user) {
   }
   
   function closeModal() {
-  const backdrop = document.getElementById('modalBackdrop');
-  if (backdrop) backdrop.classList.add('hidden');
-}
+    const backdrop = document.getElementById('modalBackdrop');
+    if (backdrop) backdrop.classList.add('hidden');
+  }
 
 
   // ====== Crear nueva orden (estado CREADA) ======

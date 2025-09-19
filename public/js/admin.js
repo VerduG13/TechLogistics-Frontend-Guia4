@@ -43,13 +43,13 @@ if (!user) {
       try {
         await createProduct(dto);
         showToast('Producto creado');
-        close();
+        closeModal();
         loadProducts();
       } catch (err) {
         showToast(err.message || 'Error al crear', 4000);
       }
     });
-    form.querySelector('#cancelBtn').addEventListener('click', () => close());
+    form.querySelector('#cancelBtn').addEventListener('click', () => closeModal());
   });
 
   newCourierBtn.addEventListener('click', () => {
@@ -74,13 +74,13 @@ if (!user) {
       try {
         await registerCourier(dto, password);
         showToast('Transportista creado');
-        close();
+        closeModal();
         loadCouriers();
       } catch (err) {
         showToast(err.message || 'Error al crear transportista', 4000);
       }
     });
-    form.querySelector('#cancelCourier').addEventListener('click', () => close());
+    form.querySelector('#cancelCourier').addEventListener('click', () => closeModal());
   });
 
   // carga datos
@@ -232,4 +232,10 @@ if (!user) {
       showToast('Error al cargar órdenes');
     }
   }
+  
+  function closeModal() {
+    const backdrop = document.getElementById('modalBackdrop');
+    if (backdrop) backdrop.classList.add('hidden');
+  }
+  
 }
